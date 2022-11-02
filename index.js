@@ -8,6 +8,13 @@ const PORT=Process.env.PORT||5001;
 app.listen(PORT,function(){
     console.log("Server is running...");
 });
+//allow api access all
+app.use(function (req, res, next){
+    res.header("Access-Control-Allow-origin","*");
+    res.header("Access-Control-Allow-Headers","Origin X-Reqested-With, Content-Type,Accept");
+    next();
+});
+
 // tao route
 app.get("demo",function(reg,res){
     res.send("Hello world!");
